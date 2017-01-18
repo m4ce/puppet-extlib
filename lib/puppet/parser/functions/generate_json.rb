@@ -1,9 +1,9 @@
 module Puppet::Parser::Functions
-  newfunction(:generate_toml, :type => :rvalue, :doc => <<-EOS
-This generate a TOML body from a Ruby hash
+  newfunction(:generate_json, :type => :rvalue, :doc => <<-EOS
+This generate a JSON body from a Ruby hash
     EOS
   ) do |arguments|
-    raise(Puppet::ParseError, "generate_toml(): Wrong number of arguments " +
+    raise(Puppet::ParseError, "generate_json(): Wrong number of arguments " +
 "given (#{arguments.size} for 1)") if arguments.size != 1
 
     arg = arguments.first
@@ -11,8 +11,8 @@ This generate a TOML body from a Ruby hash
       raise Puppet::ParseError, ("#{arg.inspect} is not a Hash. It looks to be a #{arg.class}")
     end
 
-    require 'toml'
+    require 'json'
 
-    TOML::Generator.new(arg).body
+    JSON.pretty_generate(arg)
   end
 end

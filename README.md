@@ -33,6 +33,9 @@ The extlib class has no parameters.
 #### generate_toml
 Generate a TOML document from a Ruby hash.
 
+#### generate_json
+Generate a JSON document from a Ruby hash.
+
 <a name="contact"/>
 ## Contact
 Matteo Cerutti - matteo.cerutti@hotmail.co.uk
