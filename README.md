@@ -34,7 +34,15 @@ The extlib class has no parameters.
 Generate a TOML document from a Ruby hash.
 
 #### generate_json
-Generate a JSON document from a Ruby hash.
+Generate a JSON document from a Ruby hash. For example:
+```
+$content = generate_json({'a' => 'hello'})
+```
+
+The second parameter, if provided, are the options. For example:
+```
+$content = generate_json({'a' => 'hello'}, {'indent' => "\t"})
+```
 
 <a name="contact"/>
 ## Contact

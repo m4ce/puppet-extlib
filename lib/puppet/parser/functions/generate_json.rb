@@ -1,18 +1,17 @@
 module Puppet::Parser::Functions
   newfunction(:generate_json, :type => :rvalue, :doc => <<-EOS
-This generate a JSON body from a Ruby hash
+This generate a JSON body from a Ruby hash.
+You can optionally specify the options in a second argument. For instance {"indent" => '  '}.
     EOS
-  ) do |arguments|
-    raise(Puppet::ParseError, "generate_json(): Wrong number of arguments " +
-"given (#{arguments.size} for 1)") if arguments.size != 1
+  ) do |args|
+    raise(Puppet::ParseError, "generate_json(): Must specify the Hash") if args.size == 0
 
-    arg = arguments.first
-    unless arg.is_a?(Hash)
-      raise Puppet::ParseError, ("#{arg.inspect} is not a Hash. It looks to be a #{arg.class}")
+    var = args[0]
+    unless var.is_a?(Hash)
+      raise Puppet::ParseError, ("#{var.inspect} is not a Hash. It looks to be a #{var.class}")
     end
 
     require 'json'
-
-    JSON.pretty_generate(arg)
+    JSON.pretty_generate(var, args[1] || {})
   end
 end
