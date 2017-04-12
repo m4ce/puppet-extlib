@@ -33,15 +33,37 @@ The extlib class has no parameters.
 #### generate_toml
 Generate a TOML document from a Ruby hash.
 
+Example:
+```
+$content = generate_toml({'foo' => 'bar'})
+```
+
 #### generate_json
-Generate a JSON document from a Ruby hash. For example:
+Generate a JSON document from a Ruby hash.
+
+Example:
 ```
 $content = generate_json({'a' => 'hello'})
 ```
 
-The second parameter, if provided, are the options. For example:
+The second parameter, if provided, are the options.
 ```
-$content = generate_json({'a' => 'hello'}, {'indent' => "\t"})
+generate_json({'a' => 'hello'}, {'indent' => "\t"})
+```
+
+### Functions
+
+#### format_java_properties
+Generate a Java config properties file from a Hash.
+
+Parameters:
+* properties: the properties hash
+* separator (Optional): separator (default: '.')
+* classpath_attribute (Optional): a reserved key which will be used to specify the class. For instance, log4j configuration typically have a class attribute to specify things like appender class.
+* prefix (Optional): string to prefix all the properties with
+
+```
+$content = extlib::format_java_properties({'rootLogger" => ['INFO', 'STDOUT'], 'appender" => {'class' => 'org.apache.log4j.ConsoleAppender', 'layout' => {'class' => 'org.apache.log4j.PatternLayout', 'ConversionPattern' => '[%p] %d %t %c - %m%n'}}}, '.', 'class', 'log4j')
 ```
 
 <a name="contact"/>
