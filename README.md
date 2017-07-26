@@ -43,12 +43,19 @@ Generate a JSON document from a Ruby hash.
 
 Example:
 ```
-$content = generate_json({'a' => 'hello'})
+$content = generate_json({'foo' => 'bar'})
 ```
 
 The second parameter, if provided, are the options.
 ```
-generate_json({'a' => 'hello'}, {'indent' => "\t"})
+generate_json({'foo' => 'bar'}, {'indent' => "\t"})
+```
+#### generate_yaml
+Generate a YAML document from a Ruby hash.
+
+Example:
+```
+$content = generate_yaml({'foo' => 'bar'})
 ```
 
 ### Functions
